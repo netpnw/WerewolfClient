@@ -159,6 +159,7 @@ namespace WerewolfClient
                         _currentTime = 0;
                         _currentDay = _game.Day;
 
+
                         if (_player.Session != null && _player.Session != "")
                         {
                             try

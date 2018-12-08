@@ -33,6 +33,7 @@ namespace WerewolfClient
             foreach (int i in Enumerable.Range(0, 16))
             {
                 this.Controls["GBPlayers"].Controls["BtnPlayer" + i].Click += new System.EventHandler(this.BtnPlayerX_Click);
+                
                 this.Controls["GBPlayers"].Controls["BtnPlayer" + i].Tag = i;
             }
 
@@ -72,6 +73,7 @@ namespace WerewolfClient
                 if (player.Name == wm.Player.Name || player.Status != Player.StatusEnum.Alive)
                 {
                     // FIXME, need to optimize this
+                    
                     Image img = Properties.Resources.Icon_villager;
                     string role;
                     if (player.Name == wm.Player.Name)
@@ -136,7 +138,7 @@ namespace WerewolfClient
                     }
                     ((Button)Controls["GBPlayers"].Controls["BtnPlayer" + i]).Image = img;
                 }
-                i++;
+                i++;    
             }
         }
         public void Notify(Model m)
@@ -163,6 +165,7 @@ namespace WerewolfClient
                     case EventEnum.GameStopped:
                         AddChatMessage("Game is finished, outcome is " + wm.EventPayloads["Game.Outcome"]);
                         _updateTimer.Enabled = false;
+                        pictureBox1.Visible = true;
                         break;
                     case EventEnum.GameStarted:
                         players = wm.Players;
@@ -215,11 +218,30 @@ namespace WerewolfClient
                         AddChatMessage("Switch to day time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
                         _currentPeriod = Game.PeriodEnum.Day;
                         LBPeriod.Text = "Day time of";
+                        this.BackColor = Color.WhiteSmoke;
+                        GBStatus.ForeColor = Color.Black;
+                        LBPeriod.ForeColor = Color.Black;
+                        label1.ForeColor = Color.Black;
+                        GBPlayers.ForeColor = Color.Black;
+                        GBChat.ForeColor = Color.Black;
+                        GBAction.ForeColor = Color.Black;
+                        sun.Visible = true;
+                        //if (_currentTime >= 1)
+                       // {
+                       //     sun.Visible = false;
+                       // }
                         break;
                     case EventEnum.SwitchToNightTime:
                         AddChatMessage("Switch to night time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
                         _currentPeriod = Game.PeriodEnum.Night;
                         LBPeriod.Text = "Night time of";
+                        this.BackColor = Color.FromArgb(34, 36, 49);
+                        GBStatus.ForeColor = Color.White;
+                        label1.ForeColor = Color.White;
+                        LBPeriod.ForeColor = Color.White;
+                        GBPlayers.ForeColor = Color.White;
+                        GBChat.ForeColor = Color.White;
+                        GBAction.ForeColor = Color.White;
                         break;
                     case EventEnum.UpdateDay:
                         // TODO  catch parse exception here
@@ -304,12 +326,12 @@ namespace WerewolfClient
             controller = (WerewolfController)c;
         }
 
-        private void BtnJoin_Click(object sender, EventArgs e)
+       /* private void BtnJoin_Click(object sender, EventArgs e)
         {
             WerewolfCommand wcmd = new WerewolfCommand();
             wcmd.Action = CommandEnum.JoinGame;
             controller.ActionPerformed(wcmd);
-        }
+        }*/
 
         private void BtnVote_Click(object sender, EventArgs e)
         {
@@ -376,6 +398,7 @@ namespace WerewolfClient
                 _voteActivated = false;
                 BtnVote.BackColor = Button.DefaultBackColor;
                 AddChatMessage("You vote on " + players[index].Name);
+               // pictureBox2.Visible = true;
                 WerewolfCommand wcmd = new WerewolfCommand();
                 wcmd.Action = CommandEnum.Vote;
                 wcmd.Payloads = new Dictionary<string, string>() { { "Target", players[index].Id.ToString() } };
@@ -414,6 +437,18 @@ namespace WerewolfClient
 		private void label3_Click(object sender, EventArgs e)
 		{
 			this.Close();
-		}
-	}
+
+        }
+
+        private void TbChatBox_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+    }
+
 }
