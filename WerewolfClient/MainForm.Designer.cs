@@ -63,18 +63,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.sun = new System.Windows.Forms.PictureBox();
             this.GBPlayers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.GBChat.SuspendLayout();
             this.GBAction.SuspendLayout();
             this.GBStatus.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sun)).BeginInit();
             this.SuspendLayout();
             // 
             // GBPlayers
             // 
-            this.GBPlayers.Controls.Add(this.sun);
             this.GBPlayers.Controls.Add(this.pictureBox1);
             this.GBPlayers.Controls.Add(this.BtnPlayer15);
             this.GBPlayers.Controls.Add(this.BtnPlayer1);
@@ -104,7 +101,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(94, 191);
+            this.pictureBox1.Location = new System.Drawing.Point(23, 19);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(303, 269);
             this.pictureBox1.TabIndex = 17;
@@ -497,15 +494,6 @@
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // sun
-            // 
-            this.sun.Image = ((System.Drawing.Image)(resources.GetObject("sun.Image")));
-            this.sun.Location = new System.Drawing.Point(25, 22);
-            this.sun.Name = "sun";
-            this.sun.Size = new System.Drawing.Size(281, 247);
-            this.sun.TabIndex = 18;
-            this.sun.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -531,7 +519,6 @@
             this.GBAction.ResumeLayout(false);
             this.GBStatus.ResumeLayout(false);
             this.GBStatus.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sun)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -573,7 +560,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.PictureBox sun;
     }
 }
 
