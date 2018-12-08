@@ -239,13 +239,14 @@ namespace WerewolfClient
 						GBAction.ForeColor = Color.White;
 						GBStatus.ForeColor = Color.White;
 						label3.ForeColor = Color.White;
+
 						break;
                     case EventEnum.UpdateDay:
                         // TODO  catch parse exception here
                         string tempDay = wm.EventPayloads["Game.Current.Day"];
                         _currentDay = int.Parse(tempDay);
                         LBDay.Text = tempDay;
-						this.BackColor = Color.Gainsboro;
+						//this.BackColor = Color.Gainsboro;
                         break;
                     case EventEnum.UpdateTime:
                         string tempTime = wm.EventPayloads["Game.Current.Time"];
