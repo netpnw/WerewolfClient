@@ -30,10 +30,6 @@
         {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.GBPlayers = new System.Windows.Forms.GroupBox();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.button2 = new System.Windows.Forms.Button();
-			this.button1 = new System.Windows.Forms.Button();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.BtnPlayer15 = new System.Windows.Forms.Button();
 			this.BtnPlayer1 = new System.Windows.Forms.Button();
 			this.BtnPlayer2 = new System.Windows.Forms.Button();
@@ -50,6 +46,10 @@
 			this.BtnPlayer3 = new System.Windows.Forms.Button();
 			this.BtnPlayer4 = new System.Windows.Forms.Button();
 			this.BtnPlayer11 = new System.Windows.Forms.Button();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.button2 = new System.Windows.Forms.Button();
+			this.button1 = new System.Windows.Forms.Button();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.GBChat = new System.Windows.Forms.GroupBox();
 			this.TbChatInput = new System.Windows.Forms.TextBox();
 			this.TbChatBox = new System.Windows.Forms.TextBox();
@@ -99,51 +99,6 @@
 			this.GBPlayers.TabIndex = 0;
 			this.GBPlayers.TabStop = false;
 			this.GBPlayers.Text = "Players";
-			// 
-			// panel1
-			// 
-			this.panel1.Controls.Add(this.button2);
-			this.panel1.Controls.Add(this.button1);
-			this.panel1.Controls.Add(this.pictureBox1);
-			this.panel1.Location = new System.Drawing.Point(25, 9);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(434, 600);
-			this.panel1.TabIndex = 10;
-			// 
-			// button2
-			// 
-			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-			this.button2.ForeColor = System.Drawing.Color.White;
-			this.button2.Location = new System.Drawing.Point(79, 394);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(298, 61);
-			this.button2.TabIndex = 2;
-			this.button2.Text = "Exit";
-			this.button2.UseVisualStyleBackColor = true;
-			this.button2.Click += new System.EventHandler(this.button2_Click);
-			// 
-			// button1
-			// 
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-			this.button1.ForeColor = System.Drawing.Color.White;
-			this.button1.Location = new System.Drawing.Point(79, 274);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(298, 58);
-			this.button1.TabIndex = 1;
-			this.button1.Text = "Logout";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
-			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-			this.pictureBox1.Location = new System.Drawing.Point(137, 36);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(181, 156);
-			this.pictureBox1.TabIndex = 0;
-			this.pictureBox1.TabStop = false;
 			// 
 			// BtnPlayer15
 			// 
@@ -385,6 +340,51 @@
 			this.BtnPlayer11.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			this.BtnPlayer11.UseVisualStyleBackColor = true;
 			// 
+			// panel1
+			// 
+			this.panel1.Controls.Add(this.button2);
+			this.panel1.Controls.Add(this.button1);
+			this.panel1.Controls.Add(this.pictureBox1);
+			this.panel1.Location = new System.Drawing.Point(21, 9);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(444, 600);
+			this.panel1.TabIndex = 10;
+			// 
+			// button2
+			// 
+			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+			this.button2.ForeColor = System.Drawing.Color.White;
+			this.button2.Location = new System.Drawing.Point(79, 394);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(298, 61);
+			this.button2.TabIndex = 2;
+			this.button2.Text = "Exit";
+			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.button2_Click);
+			// 
+			// button1
+			// 
+			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+			this.button1.ForeColor = System.Drawing.Color.White;
+			this.button1.Location = new System.Drawing.Point(79, 274);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(298, 58);
+			this.button1.TabIndex = 1;
+			this.button1.Text = "Logout";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+			this.pictureBox1.Location = new System.Drawing.Point(137, 36);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(181, 156);
+			this.pictureBox1.TabIndex = 0;
+			this.pictureBox1.TabStop = false;
+			// 
 			// GBChat
 			// 
 			this.GBChat.Controls.Add(this.TbChatInput);
@@ -544,7 +544,7 @@
 			this.label3.AutoSize = true;
 			this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.label3.ForeColor = System.Drawing.Color.Black;
-			this.label3.Location = new System.Drawing.Point(461, 9);
+			this.label3.Location = new System.Drawing.Point(468, 2);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(17, 17);
 			this.label3.TabIndex = 9;
@@ -556,7 +556,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Gainsboro;
-			this.ClientSize = new System.Drawing.Size(482, 625);
+			this.ClientSize = new System.Drawing.Size(484, 625);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.GBStatus);

@@ -239,6 +239,10 @@ namespace WerewolfClient
 						GBAction.ForeColor = Color.White;
 						GBStatus.ForeColor = Color.White;
 						label3.ForeColor = Color.White;
+						if (wm.Player = WerewolfModel.ROLE_GUNNER)
+						{
+							TbChatInput.Visible = false;
+						}
 
 						break;
                     case EventEnum.UpdateDay:
@@ -435,6 +439,7 @@ namespace WerewolfClient
 		private void label3_Click(object sender, EventArgs e)
 		{
 			this.BackColor = Color.FromArgb(34, 36, 49);
+			label3.ForeColor = Color.White;
 			panel1.Visible = true;
 		}
 
@@ -442,11 +447,22 @@ namespace WerewolfClient
 		{
 			this.Hide();
 			WerewolfCommand wcmd = new WerewolfCommand();
-			wcmd.Action = WerewolfCommand.CommandEnum.SignOut;
+			wcmd.Action = CommandEnum.SignOut;
 			controller.ActionPerformed(wcmd);
 			MainForm mMainForm = new MainForm();
 			Login mLogin = new Login(mMainForm);
 			mLogin.Show();
+			BtnJoin.Show();
+			//Login login = (Login)_loginconstruct;
+
+			//WerewolfCommand wcmd = new WerewolfCommand();
+			//wcmd.Action = CommandEnum.SignOut;
+			//wcmd.Payloads = new Dictionary<string, string>() { { "Server", login.GetServer() } };
+			//controller.ActionPerformed(wcmd);
+			//player.controls.stop();
+			//login.Show();
+			//this.Hide();
+			//BtnJoin.Show();
 		}
 
 	
