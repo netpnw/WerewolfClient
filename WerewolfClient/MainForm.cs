@@ -45,6 +45,7 @@ namespace WerewolfClient
             EnableButton(BtnVote, false);
             _myRole = null;
             _isDead = false;
+			panel1.Visible = false;
         }
 
         private void OnTimerEvent(object sender, EventArgs e)
@@ -172,7 +173,13 @@ namespace WerewolfClient
                         _myRole = wm.EventPayloads["Player.Role.Name"];
                         AddChatMessage("Your role is " + _myRole + ".");
                         _currentPeriod = Game.PeriodEnum.Night;
-                        EnableButton(BtnAction, true);
+						this.BackColor = Color.FromArgb(34, 36, 49);
+						GBPlayers.ForeColor = Color.White;
+						GBChat.ForeColor = Color.White;
+						GBAction.ForeColor = Color.White;
+						GBStatus.ForeColor = Color.White;
+						label3.ForeColor = Color.White;
+						EnableButton(BtnAction, true);
                         switch (_myRole)
                         {
                             case WerewolfModel.ROLE_PRIEST:
@@ -218,37 +225,31 @@ namespace WerewolfClient
                         AddChatMessage("Switch to day time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
                         _currentPeriod = Game.PeriodEnum.Day;
                         LBPeriod.Text = "Day time of";
-                        this.BackColor = Color.WhiteSmoke;
-                        GBStatus.ForeColor = Color.Black;
-                        LBPeriod.ForeColor = Color.Black;
-                        label1.ForeColor = Color.Black;
-                        GBPlayers.ForeColor = Color.Black;
-                        GBChat.ForeColor = Color.Black;
-                        GBAction.ForeColor = Color.Black;
-                       // sun.Visible = true;
-                        //if (_currentTime >= 1)
-                       // {
-                       //     sun.Visible = false;
-                       // }
-                        break;
+						this.BackColor = Color.Gainsboro;
+						GBPlayers.ForeColor = Color.Black;
+						GBChat.ForeColor = Color.Black;
+						GBAction.ForeColor = Color.Black;
+						GBStatus.ForeColor = Color.Black;
+						label3.ForeColor = Color.Black;
+						break;
                     case EventEnum.SwitchToNightTime:
                         AddChatMessage("Switch to night time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
                         _currentPeriod = Game.PeriodEnum.Night;
                         LBPeriod.Text = "Night time of";
-                        this.BackColor = Color.FromArgb(34, 36, 49);
-                        GBStatus.ForeColor = Color.White;
-                        label1.ForeColor = Color.White;
-                        LBPeriod.ForeColor = Color.White;
-                        GBPlayers.ForeColor = Color.White;
-                        GBChat.ForeColor = Color.White;
-                        GBAction.ForeColor = Color.White;
-                        
-                        break;
+						this.BackColor = Color.FromArgb(34, 36, 49);
+						GBPlayers.ForeColor = Color.White;
+						GBChat.ForeColor = Color.White;
+						GBAction.ForeColor = Color.White;
+						GBStatus.ForeColor = Color.White;
+						label3.ForeColor = Color.White;
+
+						break;
                     case EventEnum.UpdateDay:
                         // TODO  catch parse exception here
                         string tempDay = wm.EventPayloads["Game.Current.Day"];
                         _currentDay = int.Parse(tempDay);
                         LBDay.Text = tempDay;
+						//this.BackColor = Color.Gainsboro;
                         break;
                     case EventEnum.UpdateTime:
                         string tempTime = wm.EventPayloads["Game.Current.Time"];
@@ -436,6 +437,30 @@ namespace WerewolfClient
 		}
 
 		private void label3_Click(object sender, EventArgs e)
+		{
+			this.BackColor = Color.FromArgb(34, 36, 49);
+			panel1.Visible = true;
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			WerewolfCommand wcmd = new WerewolfCommand();
+			wcmd.Action = WerewolfCommand.CommandEnum.SignOut;
+			controller.ActionPerformed(wcmd);
+			MainForm mMainForm = new MainForm();
+			Login mLogin = new Login(mMainForm);
+			mLogin.Show();
+		}
+
+	
+
+		private void label4_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+		private void button2_Click(object sender, EventArgs e)
 		{
 			this.Close();
 
