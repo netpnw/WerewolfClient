@@ -33,6 +33,7 @@ namespace WerewolfClient
             foreach (int i in Enumerable.Range(0, 16))
             {
                 this.Controls["GBPlayers"].Controls["BtnPlayer" + i].Click += new System.EventHandler(this.BtnPlayerX_Click);
+                
                 this.Controls["GBPlayers"].Controls["BtnPlayer" + i].Tag = i;
             }
 
@@ -73,6 +74,7 @@ namespace WerewolfClient
                 if (player.Name == wm.Player.Name || player.Status != Player.StatusEnum.Alive)
                 {
                     // FIXME, need to optimize this
+                    
                     Image img = Properties.Resources.Icon_villager;
                     string role;
                     if (player.Name == wm.Player.Name)
@@ -137,7 +139,7 @@ namespace WerewolfClient
                     }
                     ((Button)Controls["GBPlayers"].Controls["BtnPlayer" + i]).Image = img;
                 }
-                i++;
+                i++;    
             }
         }
         public void Notify(Model m)
@@ -164,6 +166,7 @@ namespace WerewolfClient
                     case EventEnum.GameStopped:
                         AddChatMessage("Game is finished, outcome is " + wm.EventPayloads["Game.Outcome"]);
                         _updateTimer.Enabled = false;
+                        pictureBox1.Visible = true;
                         break;
                     case EventEnum.GameStarted:
                         players = wm.Players;
@@ -401,6 +404,7 @@ namespace WerewolfClient
                 _voteActivated = false;
                 BtnVote.BackColor = Button.DefaultBackColor;
                 AddChatMessage("You vote on " + players[index].Name);
+               // pictureBox2.Visible = true;
                 WerewolfCommand wcmd = new WerewolfCommand();
                 wcmd.Action = CommandEnum.Vote;
                 wcmd.Payloads = new Dictionary<string, string>() { { "Target", players[index].Id.ToString() } };
@@ -475,6 +479,18 @@ namespace WerewolfClient
 		private void button2_Click(object sender, EventArgs e)
 		{
 			this.Close();
-		}
-	}
+
+        }
+
+        private void TbChatBox_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+    }
+
 }

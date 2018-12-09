@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CommandEnum = WerewolfClient.WerewolfCommand.CommandEnum;
 
 namespace WerewolfClient
 {
@@ -32,6 +33,9 @@ namespace WerewolfClient
                         {
                             _mainForm.Visible = true;
                             this.Visible = false;
+                            WerewolfCommand wcmd = new WerewolfCommand();
+                           // wcmd.Action = CommandEnum.JoinGame;
+                            controller.ActionPerformed(wcmd);
                         }
                         else
                         {
@@ -74,34 +78,36 @@ namespace WerewolfClient
 
 			
         }
-
-		private void TBServer_TextChanged(object sender, EventArgs e)
-		{
-			
-		}
-
-		private void Login_Load(object sender, EventArgs e)
-		{
-
-		}
-
-		private void TbPassword_TextChanged(object sender, EventArgs e)
-		{
-			
-
-
-		}
-
+        
+		
 		private void BtnExit_Click(object sender, EventArgs e)
 		{
 			this.Close();
 		}
+        
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-		private void TbLogin_TextChanged(object sender, EventArgs e)
-		{
-			
-		}
+            
+            CBServer.BackColor = Color.FromArgb(34, 36, 49);
 
+            if (CBServer.SelectedItem.ToString() == "2 Player")
+            {
+                TBServer.Text = "http://project-ile.net:2342/werewolf/";
+                
+            }
 
-	}
+           else if (CBServer.SelectedItem.ToString() == "4 Player")
+            {
+                TBServer.Text = "http://project-ile.net:2344/werewolf/";
+            }
+
+            else  if (CBServer.SelectedItem.ToString() == "16 Player")
+            {
+                TBServer.Text = "http://project-ile.net:23416/werewolf/";
+            }
+        }
+
+        
+    }
 }
