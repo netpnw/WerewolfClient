@@ -225,7 +225,7 @@ namespace WerewolfClient
                         GBPlayers.ForeColor = Color.Black;
                         GBChat.ForeColor = Color.Black;
                         GBAction.ForeColor = Color.Black;
-                        sun.Visible = true;
+                       // sun.Visible = true;
                         //if (_currentTime >= 1)
                        // {
                        //     sun.Visible = false;
@@ -242,6 +242,7 @@ namespace WerewolfClient
                         GBPlayers.ForeColor = Color.White;
                         GBChat.ForeColor = Color.White;
                         GBAction.ForeColor = Color.White;
+                        
                         break;
                     case EventEnum.UpdateDay:
                         // TODO  catch parse exception here
@@ -326,12 +327,12 @@ namespace WerewolfClient
             controller = (WerewolfController)c;
         }
 
-       /* private void BtnJoin_Click(object sender, EventArgs e)
+        private void BtnJoin_Click(object sender, EventArgs e)
         {
             WerewolfCommand wcmd = new WerewolfCommand();
             wcmd.Action = CommandEnum.JoinGame;
             controller.ActionPerformed(wcmd);
-        }*/
+        }
 
         private void BtnVote_Click(object sender, EventArgs e)
         {

@@ -34,7 +34,7 @@ namespace WerewolfClient
                             _mainForm.Visible = true;
                             this.Visible = false;
                             WerewolfCommand wcmd = new WerewolfCommand();
-                            wcmd.Action = CommandEnum.JoinGame;
+                           // wcmd.Action = CommandEnum.JoinGame;
                             controller.ActionPerformed(wcmd);
                         }
                         else
@@ -92,6 +92,7 @@ namespace WerewolfClient
             if (CBServer.SelectedItem.ToString() == "2 Player")
             {
                 TBServer.Text = "http://project-ile.net:2342/werewolf/";
+                
             }
 
            else if (CBServer.SelectedItem.ToString() == "4 Player")
