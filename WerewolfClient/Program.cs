@@ -18,9 +18,10 @@ namespace WerewolfClient
             Application.SetCompatibleTextRenderingDefault(false);
 
             MainForm mMainForm = new MainForm();
-            mMainForm.Visible = false;
+			mMainForm.Visible = false;
             Login mLogin = new Login(mMainForm);
-            WerewolfController mControler =  WerewolfController.GetInstance();
+			mMainForm.addSignIn(mLogin);
+			WerewolfController mControler =  WerewolfController.GetInstance();
             WerewolfModel mModel = new WerewolfModel();
 
             // View -> Controller

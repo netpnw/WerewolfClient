@@ -37,13 +37,14 @@ namespace WerewolfClient
         public const string TRUE = "True";
         public const string FALSE = "False";
         private long? latestChatId = 0;
-
+		public List<Player> List;
 
         public enum EventEnum
         {
             NOP = 1,
             SignUp = 2,
             SignIn = 3,
+			SignOut = 18,
             JoinGame = 4,
             GameStarted = 5,
             GameStopped = 6,
@@ -58,6 +59,7 @@ namespace WerewolfClient
             Alive = 15,
             Chat = 16,
             ChatMessage = 17,
+			
         }
         public const string ROLE_SEER = "Seer";
         public const string ROLE_AURA_SEER = "Aura Seer";
@@ -383,7 +385,25 @@ namespace WerewolfClient
             }
             NotifyAll();
         }
-        public void SignUp(string server, string login, string password)
+		public void SignOut(string server)
+		{
+			try
+			{
+				InitilizeModel(server);
+				List<Player> p = _playerEP.LogoutPlayer(_player.Session);
+				_event = EventEnum.SignOut;
+				_eventPayloads["Success"] = TRUE;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.ToString());
+				_event = EventEnum.SignOut;
+				_eventPayloads["Success"] = FALSE;
+				_eventPayloads["Error"] = ex.ToString();
+			}
+			NotifyAll();
+		}
+		public void SignUp(string server, string login, string password)
         {
             try
             {
@@ -429,6 +449,7 @@ namespace WerewolfClient
             }
             NotifyAll();
         }
+		
 
         internal void Action(string target)
         {
@@ -449,7 +470,8 @@ namespace WerewolfClient
             NotifyAll();
         }
 
-        internal void Chat(string v)
+
+		internal void Chat(string v)
         {
             try
             {
