@@ -442,11 +442,7 @@ namespace WerewolfClient
             }
         }
 
-		private void TbChatInput_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
+		
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
@@ -499,6 +495,33 @@ namespace WerewolfClient
             
         }
 
+        //private bool _FullSceenChatActivated;
+        private void FullSceen_Click(object sender, EventArgs e)
+        {
+            
+
+            TbChatBox.Size = new Size(284, 269);
+            TbChatBox.Location = new Point(22, -205);
+            
+
+            MiniChat.Visible = true;
+            FullSceen.Visible = false;
+        }
+
+        private void MiniChat_Click(object sender, EventArgs e)
+        {
+            TbChatBox.Size = new Size(284, 40);
+            TbChatBox.Location = new Point(22, 24);
+
+            FullSceen.Visible = true;
+            MiniChat.Visible = false;
+        }
+
+        private void TbChatBox_TextChanged_1(object sender, EventArgs e)
+        {
+            
+
+        }
     }
 
 }
