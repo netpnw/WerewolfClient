@@ -26,6 +26,7 @@ namespace WerewolfClient
         private string _myRole;
         private bool _isDead;
         private List<Player> players = null;
+		private Form constuctlogin;
         public MainForm()
         {
             InitializeComponent();
@@ -46,6 +47,11 @@ namespace WerewolfClient
             _myRole = null;
             _isDead = false;
 			panel1.Visible = false;
+        }
+
+		public void addSignIn(Form login)
+        {
+            constuctlogin = login;
         }
 
         private void OnTimerEvent(object sender, EventArgs e)
@@ -242,6 +248,10 @@ namespace WerewolfClient
 						GBAction.ForeColor = Color.White;
 						GBStatus.ForeColor = Color.White;
 						label3.ForeColor = Color.White;
+						//if (wm.Player = WerewolfModel.ROLE_GUNNER)
+						//{
+						//	TbChatInput.Visible = false;
+						//}
 
 						break;
                     case EventEnum.UpdateDay:
@@ -317,6 +327,13 @@ namespace WerewolfClient
                             }
                         }
                         break;
+					case EventEnum.SignOut:
+						if (wm.EventPayloads["Success"] == WerewolfModel.TRUE)
+						{
+							constuctlogin.Visible = true;
+							this.Visible = false;
+						}
+						break;
                 }
                 // need to reset event
                 wm.Event = EventEnum.NOP;
@@ -431,18 +448,29 @@ namespace WerewolfClient
 		private void label3_Click(object sender, EventArgs e)
 		{
 			this.BackColor = Color.FromArgb(34, 36, 49);
+			label3.ForeColor = Color.White;
 			panel1.Visible = true;
 		}
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			this.Hide();
+
+			Login login = (Login)constuctlogin;
 			WerewolfCommand wcmd = new WerewolfCommand();
-			wcmd.Action = WerewolfCommand.CommandEnum.SignOut;
+			wcmd.Action = CommandEnum.SignOut;
+			wcmd.Payloads = new Dictionary<string, string>() { { "Server", login.GetServer() } };
 			controller.ActionPerformed(wcmd);
-			MainForm mMainForm = new MainForm();
-			Login mLogin = new Login(mMainForm);
-			mLogin.Show();
+			//player.controls.stop();
+			login.Show();
+			this.Hide();
+			BtnJoin.Show();
+			panel1.Visible = false;
+			this.BackColor = Color.Gainsboro;
+			GBPlayers.ForeColor = Color.Black;
+			GBChat.ForeColor = Color.Black;
+			GBAction.ForeColor = Color.Black;
+			GBStatus.ForeColor = Color.Black;
+			label3.ForeColor = Color.Black;
 		}
 
 	

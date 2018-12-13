@@ -33,9 +33,10 @@ namespace WerewolfClient
                         {
                             _mainForm.Visible = true;
                             this.Visible = false;
-                            WerewolfCommand wcmd = new WerewolfCommand();
-                           
-                            controller.ActionPerformed(wcmd);
+							
+                           // WerewolfCommand wcmd = new WerewolfCommand();
+                           // wcmd.Action = CommandEnum.JoinGame;
+                           // controller.ActionPerformed(wcmd);
                         }
                         else
                         {
@@ -78,6 +79,11 @@ namespace WerewolfClient
 
 			
         }
+
+		public string GetServer()
+        {
+            return TBServer.Text;
+        }
         
 		
 		private void BtnExit_Click(object sender, EventArgs e)
@@ -108,6 +114,9 @@ namespace WerewolfClient
             }
         }
 
-        
-    }
+		private void Login_Load(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
