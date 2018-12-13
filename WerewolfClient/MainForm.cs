@@ -166,7 +166,7 @@ namespace WerewolfClient
                     case EventEnum.GameStopped:
                         AddChatMessage("Game is finished, outcome is " + wm.EventPayloads["Game.Outcome"]);
                         _updateTimer.Enabled = false;
-                        pictureBox1.Visible = true;
+                        GameFnish.Visible = true;
                         break;
                     case EventEnum.GameStarted:
                         players = wm.Players;
@@ -427,10 +427,6 @@ namespace WerewolfClient
 
 		
 
-		private void MainForm_Load(object sender, EventArgs e)
-		{
-
-		}
 
 		private void label3_Click(object sender, EventArgs e)
 		{
@@ -462,16 +458,13 @@ namespace WerewolfClient
 
         }
 
-        private void TbChatBox_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
+       
 
         //private bool _FullSceenChatActivated;
         private void FullSceen_Click(object sender, EventArgs e)
         {
-            
 
+            //GBChat.Size= new Size(284, 269);
             TbChatBox.Size = new Size(284, 269);
             TbChatBox.Location = new Point(22, -205);
             
@@ -482,6 +475,7 @@ namespace WerewolfClient
 
         private void MiniChat_Click(object sender, EventArgs e)
         {
+           // GBChat.Size = new Size(284, 40);
             TbChatBox.Size = new Size(284, 40);
             TbChatBox.Location = new Point(22, 24);
 
@@ -489,11 +483,10 @@ namespace WerewolfClient
             MiniChat.Visible = false;
         }
 
-        private void TbChatBox_TextChanged_1(object sender, EventArgs e)
-        {
-            
+        
+        
 
-        }
+        
     }
 
 }

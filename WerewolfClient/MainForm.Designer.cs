@@ -66,12 +66,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.GameFnish = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.GBPlayers.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.GBChat.SuspendLayout();
             this.GBAction.SuspendLayout();
             this.GBStatus.SuspendLayout();
+            this.GameFnish.SuspendLayout();
             this.SuspendLayout();
             // 
             // GBPlayers
@@ -329,7 +333,7 @@
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(16, 11);
+            this.panel1.Location = new System.Drawing.Point(16, 3);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(326, 488);
@@ -376,10 +380,11 @@
             // 
             this.GBChat.Controls.Add(this.TbChatBox);
             this.GBChat.Controls.Add(this.TbChatInput);
+            this.GBChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GBChat.ForeColor = System.Drawing.Color.Black;
-            this.GBChat.Location = new System.Drawing.Point(20, 297);
+            this.GBChat.Location = new System.Drawing.Point(20, 289);
             this.GBChat.Name = "GBChat";
-            this.GBChat.Size = new System.Drawing.Size(325, 103);
+            this.GBChat.Size = new System.Drawing.Size(325, 111);
             this.GBChat.TabIndex = 2;
             this.GBChat.TabStop = false;
             this.GBChat.Text = "Chat";
@@ -388,21 +393,23 @@
             // 
             this.TbChatBox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TbChatBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbChatBox.Location = new System.Drawing.Point(21, 24);
+            this.TbChatBox.Location = new System.Drawing.Point(11, 23);
             this.TbChatBox.Multiline = true;
             this.TbChatBox.Name = "TbChatBox";
+            this.TbChatBox.ReadOnly = true;
             this.TbChatBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TbChatBox.Size = new System.Drawing.Size(284, 36);
+            this.TbChatBox.Size = new System.Drawing.Size(284, 41);
             this.TbChatBox.TabIndex = 0;
-            this.TbChatBox.TextChanged += new System.EventHandler(this.TbChatBox_TextChanged_1);
+            
             // 
             // TbChatInput
             // 
             this.TbChatInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbChatInput.Location = new System.Drawing.Point(21, 70);
+            this.TbChatInput.Location = new System.Drawing.Point(11, 70);
             this.TbChatInput.Name = "TbChatInput";
             this.TbChatInput.Size = new System.Drawing.Size(284, 26);
             this.TbChatInput.TabIndex = 1;
+           
             this.TbChatInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbChatInput_Enter);
             // 
             // GBAction
@@ -546,6 +553,46 @@
             this.label3.Text = "X";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
+            // GameFnish
+            // 
+            this.GameFnish.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.GameFnish.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GameFnish.BackgroundImage")));
+            this.GameFnish.Controls.Add(this.button4);
+            this.GameFnish.Controls.Add(this.button5);
+            this.GameFnish.Location = new System.Drawing.Point(8, 5);
+            this.GameFnish.Margin = new System.Windows.Forms.Padding(2);
+            this.GameFnish.Name = "GameFnish";
+            this.GameFnish.Size = new System.Drawing.Size(337, 500);
+            this.GameFnish.TabIndex = 13;
+            this.GameFnish.Visible = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(55, 270);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(224, 52);
+            this.button4.TabIndex = 12;
+            this.button4.Text = "Play again";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(55, 356);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(224, 50);
+            this.button5.TabIndex = 12;
+            this.button5.Text = "Exit";
+            this.button5.UseVisualStyleBackColor = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -553,17 +600,19 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(362, 508);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.GameFnish);
+            this.Controls.Add(this.GBChat);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.GBStatus);
             this.Controls.Add(this.GBAction);
-            this.Controls.Add(this.GBChat);
             this.Controls.Add(this.GBPlayers);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Werewolf Client";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.Load += new System.EventHandler(this.MainForm_Load);
+            
             this.GBPlayers.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -572,6 +621,7 @@
             this.GBAction.ResumeLayout(false);
             this.GBStatus.ResumeLayout(false);
             this.GBStatus.PerformLayout();
+            this.GameFnish.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -616,6 +666,9 @@
 		private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button FullSceen;
         private System.Windows.Forms.Button MiniChat;
+        private System.Windows.Forms.Panel GameFnish;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }
 
