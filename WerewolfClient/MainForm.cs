@@ -24,6 +24,9 @@ namespace WerewolfClient
         private bool _voteActivated;
         private bool _actionActivated;
         private string _myRole;
+
+        private bool _MouseDown;
+
         private bool _isDead;
         private List<Player> players = null;
 		private Form constuctlogin;
@@ -290,9 +293,11 @@ namespace WerewolfClient
                     case EventEnum.YouShotDead:
                         AddChatMessage("You're shot dead by gunner.");
                         _isDead = true;
+                        //RIP.Visible = true;
                         break;
                     case EventEnum.OtherShotDead:
                         AddChatMessage(wm.EventPayloads["Game.Target.Name"] + " was shot dead by gunner.");
+                        
                         break;
                     case EventEnum.Alive:
                         AddChatMessage(wm.EventPayloads["Game.Target.Name"] + " has been revived by medium.");
@@ -375,6 +380,7 @@ namespace WerewolfClient
             if (_isDead)
             {
                 AddChatMessage("You're dead!!");
+                //RIP.Visible = true;
                 return;
             }
             if (_actionActivated)
@@ -444,37 +450,13 @@ namespace WerewolfClient
 
 		
 
-
 		private void label3_Click(object sender, EventArgs e)
 		{
-			this.BackColor = Color.FromArgb(34, 36, 49);
-			label3.ForeColor = Color.White;
-			panel1.Visible = true;
+            this.BackColor = Color.FromArgb(34, 36, 49);
+            label3.ForeColor = Color.White;
+            panel1.Visible = true;
 		}
-
-		private void button1_Click(object sender, EventArgs e)
-		{
-
-			Login login = (Login)constuctlogin;
-			WerewolfCommand wcmd = new WerewolfCommand();
-			wcmd.Action = CommandEnum.SignOut;
-			wcmd.Payloads = new Dictionary<string, string>() { { "Server", login.GetServer() } };
-			controller.ActionPerformed(wcmd);
-			//player.controls.stop();
-			login.Show();
-			this.Hide();
-			BtnJoin.Show();
-			panel1.Visible = false;
-			this.BackColor = Color.Gainsboro;
-			GBPlayers.ForeColor = Color.Black;
-			GBChat.ForeColor = Color.Black;
-			GBAction.ForeColor = Color.Black;
-			GBStatus.ForeColor = Color.Black;
-			label3.ForeColor = Color.Black;
-		}
-
-	
-
+        
 		private void label4_Click(object sender, EventArgs e)
 		{
 			this.Close();
@@ -486,16 +468,18 @@ namespace WerewolfClient
 
         }
 
-       
-
-        //private bool _FullSceenChatActivated;
-        private void FullSceen_Click(object sender, EventArgs e)
+      
+        /*private void FullSceen_Click(object sender, EventArgs e)
         {
 
-            //GBChat.Size= new Size(284, 269);
-            TbChatBox.Size = new Size(284, 269);
-            TbChatBox.Location = new Point(22, -205);
-            
+            GBChat.Size = new Size(325, 370);
+            GBChat.Location = new Point(20, 30);
+
+            TbChatBox.Location = new Point(19, 23);
+            TbChatBox.Size = new Size(284, 299);
+
+            TbChatInput.Location = new Point(19, 325);
+
 
             MiniChat.Visible = true;
             FullSceen.Visible = false;
@@ -503,18 +487,155 @@ namespace WerewolfClient
 
         private void MiniChat_Click(object sender, EventArgs e)
         {
-           // GBChat.Size = new Size(284, 40);
-            TbChatBox.Size = new Size(284, 40);
-            TbChatBox.Location = new Point(22, 24);
+
+            GBChat.Size = new Size(325, 113);
+            GBChat.Location = new Point(20, 287);
+
+
+            TbChatBox.Location = new Point(19, 23);
+            TbChatBox.Size = new Size(284, 41);
+
+            TbChatInput.Location = new Point(19, 70);
+
+
+
 
             FullSceen.Visible = true;
             MiniChat.Visible = false;
+        }*/
+
+        private void ExitGameEnd_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        
+
+       /* private void button4_Click(object sender, EventArgs e)
+        {
+            Login login = (Login)constuctlogin;
+            WerewolfCommand wcmd = new WerewolfCommand();
+            wcmd.Action = CommandEnum.SignOut;
+            wcmd.Payloads = new Dictionary<string, string>() { { "Server", login.GetServer() } };
+            controller.ActionPerformed(wcmd);
+            //player.controls.stop();
+            login.Show();
+            this.Hide();
+            BtnJoin.Show();
+            panel1.Visible = false;
+            this.BackColor = Color.Gainsboro;
+            GBPlayers.ForeColor = Color.Black;
+            GBChat.ForeColor = Color.Black;
+            GBAction.ForeColor = Color.Black;
+            GBStatus.ForeColor = Color.Black;
+            label3.ForeColor = Color.Black;
+        }*/
+
+        
+        /*private void TbChatBox_TextChanged(object sender, EventArgs e)
+        {
+            _MouseDown = true;
+            if (_MouseDown)
+            {
+                GBChat.Size = new Size(325, 370);
+                GBChat.Location = new Point(20, 30);
+
+                TbChatBox.Location = new Point(19, 23);
+                TbChatBox.Size = new Size(284, 299);
+
+                TbChatInput.Location = new Point(19, 325);
+            }
+            else
+            
+        }*/
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Login login = (Login)constuctlogin;
+            WerewolfCommand wcmd = new WerewolfCommand();
+            wcmd.Action = CommandEnum.SignOut;
+            wcmd.Payloads = new Dictionary<string, string>() { { "Server", login.GetServer() } };
+            controller.ActionPerformed(wcmd);
+            //player.controls.stop();
+            login.Show();
+            this.Hide();
+            BtnJoin.Show();
+            panel1.Visible = false;
+            this.BackColor = Color.Gainsboro;
+            GBPlayers.ForeColor = Color.Black;
+            GBChat.ForeColor = Color.Black;
+            GBAction.ForeColor = Color.Black;
+            GBStatus.ForeColor = Color.Black;
+            label3.ForeColor = Color.Black;
+        }
+        int chatsetup = 1;
+        private void TbChatBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (chatsetup == 1)
+            {
+                chatsetup = 2;
+            }
+            else
+            {
+                chatsetup = 1;
+            }
+         /*   GBChat.Size = new Size(325, 370);
+            GBChat.Location = new Point(20, 30);
+
+            TbChatBox.Location = new Point(19, 23);
+            TbChatBox.Size = new Size(284, 299);
+
+            TbChatInput.Location = new Point(19, 325);*/
         }
 
-        
-        
+        private void TbChatBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            if(chatsetup == 2)
+            {
+                GBChat.Size = new Size(325, 370);
+                GBChat.Location = new Point(20, 30);
 
-        
+                TbChatBox.Location = new Point(19, 23);
+                TbChatBox.Size = new Size(284, 299);
+
+                TbChatInput.Location = new Point(19, 325);
+            }
+            if (chatsetup == 1)
+            {
+                GBChat.Size = new Size(325, 113);
+                GBChat.Location = new Point(20, 287);
+
+
+                TbChatBox.Location = new Point(19, 23);
+                TbChatBox.Size = new Size(284, 41);
+
+                TbChatInput.Location = new Point(19, 70);
+            }
+        }
+
+       
+
+        /*      private void TbChatBox_MouseEnter(object sender, EventArgs e)
+              {
+                  GBChat.Size = new Size(325, 370);
+                  GBChat.Location = new Point(20, 30);
+
+                  TbChatBox.Location = new Point(19, 23);
+                  TbChatBox.Size = new Size(284, 299);
+
+                  TbChatInput.Location = new Point(19, 325);
+              }
+
+              private void TbChatBox_MouseLeave(object sender, EventArgs e)
+              {
+                  GBChat.Size = new Size(325, 113);
+                  GBChat.Location = new Point(20, 287);
+
+
+                  TbChatBox.Location = new Point(19, 23);
+                  TbChatBox.Size = new Size(284, 41);
+
+                  TbChatInput.Location = new Point(19, 70);
+              }*/
     }
 
 }

@@ -30,6 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.GBPlayers = new System.Windows.Forms.GroupBox();
+            this.GameFnish = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ExitGameEnd = new System.Windows.Forms.Button();
             this.BtnPlayer15 = new System.Windows.Forms.Button();
             this.BtnPlayer1 = new System.Windows.Forms.Button();
             this.BtnPlayer2 = new System.Windows.Forms.Button();
@@ -46,16 +52,10 @@
             this.BtnPlayer4 = new System.Windows.Forms.Button();
             this.BtnPlayer11 = new System.Windows.Forms.Button();
             this.BtnPlayer12 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.GBChat = new System.Windows.Forms.GroupBox();
             this.TbChatBox = new System.Windows.Forms.TextBox();
             this.TbChatInput = new System.Windows.Forms.TextBox();
             this.GBAction = new System.Windows.Forms.GroupBox();
-            this.MiniChat = new System.Windows.Forms.Button();
-            this.FullSceen = new System.Windows.Forms.Button();
             this.BtnJoin = new System.Windows.Forms.Button();
             this.BtnAction = new System.Windows.Forms.Button();
             this.BtnVote = new System.Windows.Forms.Button();
@@ -66,16 +66,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.GameFnish = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.GBPlayers.SuspendLayout();
+            this.GameFnish.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.GBChat.SuspendLayout();
             this.GBAction.SuspendLayout();
             this.GBStatus.SuspendLayout();
-            this.GameFnish.SuspendLayout();
             this.SuspendLayout();
             // 
             // GBPlayers
@@ -103,6 +100,84 @@
             this.GBPlayers.TabIndex = 0;
             this.GBPlayers.TabStop = false;
             this.GBPlayers.Text = "Players";
+            // 
+            // GameFnish
+            // 
+            this.GameFnish.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.GameFnish.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GameFnish.BackgroundImage")));
+            this.GameFnish.Controls.Add(this.panel1);
+            this.GameFnish.Controls.Add(this.ExitGameEnd);
+            this.GameFnish.Location = new System.Drawing.Point(11, 7);
+            this.GameFnish.Margin = new System.Windows.Forms.Padding(2);
+            this.GameFnish.Name = "GameFnish";
+            this.GameFnish.Size = new System.Drawing.Size(337, 500);
+            this.GameFnish.TabIndex = 13;
+            this.GameFnish.Visible = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Location = new System.Drawing.Point(7, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(326, 488);
+            this.panel1.TabIndex = 10;
+            this.panel1.Visible = false;
+            // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(59, 320);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(224, 50);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Exit";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(59, 223);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(224, 47);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Logout";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(103, 29);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(136, 127);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // ExitGameEnd
+            // 
+            this.ExitGameEnd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.ExitGameEnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitGameEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.ExitGameEnd.ForeColor = System.Drawing.Color.White;
+            this.ExitGameEnd.Location = new System.Drawing.Point(55, 356);
+            this.ExitGameEnd.Margin = new System.Windows.Forms.Padding(2);
+            this.ExitGameEnd.Name = "ExitGameEnd";
+            this.ExitGameEnd.Size = new System.Drawing.Size(224, 50);
+            this.ExitGameEnd.TabIndex = 12;
+            this.ExitGameEnd.Text = "Exit";
+            this.ExitGameEnd.UseVisualStyleBackColor = false;
+            this.ExitGameEnd.Click += new System.EventHandler(this.ExitGameEnd_Click);
             // 
             // BtnPlayer15
             // 
@@ -328,63 +403,15 @@
             this.BtnPlayer12.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnPlayer12.UseVisualStyleBackColor = true;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(16, 3);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(326, 488);
-            this.panel1.TabIndex = 10;
-            // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(59, 320);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(224, 50);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Exit";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(59, 223);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(224, 47);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Logout";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(103, 29);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(136, 127);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // GBChat
             // 
             this.GBChat.Controls.Add(this.TbChatBox);
             this.GBChat.Controls.Add(this.TbChatInput);
             this.GBChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GBChat.ForeColor = System.Drawing.Color.Black;
-            this.GBChat.Location = new System.Drawing.Point(20, 289);
+            this.GBChat.Location = new System.Drawing.Point(20, 287);
             this.GBChat.Name = "GBChat";
-            this.GBChat.Size = new System.Drawing.Size(325, 111);
+            this.GBChat.Size = new System.Drawing.Size(325, 113);
             this.GBChat.TabIndex = 2;
             this.GBChat.TabStop = false;
             this.GBChat.Text = "Chat";
@@ -393,59 +420,36 @@
             // 
             this.TbChatBox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TbChatBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbChatBox.Location = new System.Drawing.Point(11, 23);
+            this.TbChatBox.Location = new System.Drawing.Point(19, 24);
             this.TbChatBox.Multiline = true;
             this.TbChatBox.Name = "TbChatBox";
             this.TbChatBox.ReadOnly = true;
-            this.TbChatBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.TbChatBox.Size = new System.Drawing.Size(284, 41);
             this.TbChatBox.TabIndex = 0;
-            
+            this.TbChatBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TbChatBox_MouseDown);
+            this.TbChatBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TbChatBox_MouseUp);
             // 
             // TbChatInput
             // 
             this.TbChatInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbChatInput.Location = new System.Drawing.Point(11, 70);
+            this.TbChatInput.Location = new System.Drawing.Point(19, 71);
             this.TbChatInput.Name = "TbChatInput";
             this.TbChatInput.Size = new System.Drawing.Size(284, 26);
             this.TbChatInput.TabIndex = 1;
-           
             this.TbChatInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbChatInput_Enter);
             // 
             // GBAction
             // 
-            this.GBAction.Controls.Add(this.MiniChat);
-            this.GBAction.Controls.Add(this.FullSceen);
             this.GBAction.Controls.Add(this.BtnJoin);
             this.GBAction.Controls.Add(this.BtnAction);
             this.GBAction.Controls.Add(this.BtnVote);
             this.GBAction.ForeColor = System.Drawing.Color.Black;
-            this.GBAction.Location = new System.Drawing.Point(22, 414);
+            this.GBAction.Location = new System.Drawing.Point(22, 406);
             this.GBAction.Name = "GBAction";
             this.GBAction.Size = new System.Drawing.Size(244, 82);
             this.GBAction.TabIndex = 3;
             this.GBAction.TabStop = false;
             this.GBAction.Text = "Action";
-            // 
-            // MiniChat
-            // 
-            this.MiniChat.Location = new System.Drawing.Point(53, 0);
-            this.MiniChat.Name = "MiniChat";
-            this.MiniChat.Size = new System.Drawing.Size(86, 21);
-            this.MiniChat.TabIndex = 11;
-            this.MiniChat.Text = "ย่อช่องแชท";
-            this.MiniChat.UseVisualStyleBackColor = true;
-            this.MiniChat.Click += new System.EventHandler(this.MiniChat_Click);
-            // 
-            // FullSceen
-            // 
-            this.FullSceen.Location = new System.Drawing.Point(53, 0);
-            this.FullSceen.Name = "FullSceen";
-            this.FullSceen.Size = new System.Drawing.Size(86, 21);
-            this.FullSceen.TabIndex = 10;
-            this.FullSceen.Text = "ขยายช่องแชท";
-            this.FullSceen.UseVisualStyleBackColor = true;
-            this.FullSceen.Click += new System.EventHandler(this.FullSceen_Click);
             // 
             // BtnJoin
             // 
@@ -553,53 +557,12 @@
             this.label3.Text = "X";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // GameFnish
-            // 
-            this.GameFnish.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.GameFnish.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GameFnish.BackgroundImage")));
-            this.GameFnish.Controls.Add(this.button4);
-            this.GameFnish.Controls.Add(this.button5);
-            this.GameFnish.Location = new System.Drawing.Point(8, 5);
-            this.GameFnish.Margin = new System.Windows.Forms.Padding(2);
-            this.GameFnish.Name = "GameFnish";
-            this.GameFnish.Size = new System.Drawing.Size(337, 500);
-            this.GameFnish.TabIndex = 13;
-            this.GameFnish.Visible = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(55, 270);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(224, 52);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "Play again";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(55, 356);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(224, 50);
-            this.button5.TabIndex = 12;
-            this.button5.Text = "Exit";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(362, 508);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.GameFnish);
             this.Controls.Add(this.GBChat);
             this.Controls.Add(this.label3);
@@ -612,8 +575,8 @@
             this.Name = "MainForm";
             this.Text = "Werewolf Client";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            
             this.GBPlayers.ResumeLayout(false);
+            this.GameFnish.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.GBChat.ResumeLayout(false);
@@ -621,7 +584,6 @@
             this.GBAction.ResumeLayout(false);
             this.GBStatus.ResumeLayout(false);
             this.GBStatus.PerformLayout();
-            this.GameFnish.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -664,11 +626,8 @@
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button FullSceen;
-        private System.Windows.Forms.Button MiniChat;
         private System.Windows.Forms.Panel GameFnish;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button ExitGameEnd;
     }
 }
 

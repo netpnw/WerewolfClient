@@ -93,14 +93,13 @@ namespace WerewolfClient
         
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            
-            CBServer.BackColor = Color.FromArgb(34, 36, 49);
+ 
 
             if (CBServer.SelectedItem.ToString() == "2 Player")
             {
+                //TBServer.Text = "http://localhost:2343/werewolf/";
                 TBServer.Text = "http://project-ile.net:2342/werewolf/";
-                
+
             }
 
            else if (CBServer.SelectedItem.ToString() == "4 Player")
