@@ -121,22 +121,25 @@ namespace WerewolfClient
 
 		}
 		
-		private void panel4_MouseDown(object sender, MouseEventArgs e)
+
+
+		private void Login_MouseDown(object sender, MouseEventArgs e)
 		{
 			drag = true;
 			start_point = new Point(e.X, e.Y);
 		}
 
-		private void panel4_MouseMove(object sender, MouseEventArgs e)
+		private void Login_MouseMove(object sender, MouseEventArgs e)
 		{
 			if (drag)
 			{
 				Point p = PointToScreen(e.Location);
 				this.Location = new Point(p.X - start_point.X, p.Y - start_point.Y);
 			}
+
 		}
 
-		private void panel4_MouseUp(object sender, MouseEventArgs e)
+		private void Login_MouseUp(object sender, MouseEventArgs e)
 		{
 			drag = false;
 		}

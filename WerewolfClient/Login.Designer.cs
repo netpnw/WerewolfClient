@@ -48,7 +48,6 @@
 			this.CBServer = new System.Windows.Forms.ComboBox();
 			this.TBServer = new System.Windows.Forms.TextBox();
 			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.panel4 = new System.Windows.Forms.Panel();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -259,16 +258,6 @@
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
 			this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
 			// 
-			// panel4
-			// 
-			this.panel4.Location = new System.Drawing.Point(0, 3);
-			this.panel4.Name = "panel4";
-			this.panel4.Size = new System.Drawing.Size(531, 100);
-			this.panel4.TabIndex = 20;
-			this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseDown);
-			this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseMove);
-			this.panel4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseUp);
-			// 
 			// Login
 			// 
 			this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
@@ -293,13 +282,15 @@
 			this.Controls.Add(this.BtnSignIn);
 			this.Controls.Add(this.TbPassword);
 			this.Controls.Add(this.TbLogin);
-			this.Controls.Add(this.panel4);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "Login";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Login";
 			this.Load += new System.EventHandler(this.Login_Load);
+			this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Login_MouseDown);
+			this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Login_MouseMove);
+			this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Login_MouseUp);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -328,6 +319,5 @@
         private System.Windows.Forms.ComboBox CBServer;
         private System.Windows.Forms.TextBox TBServer;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-		private System.Windows.Forms.Panel panel4;
 	}
 }

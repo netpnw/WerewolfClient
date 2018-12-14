@@ -49,6 +49,7 @@ namespace WerewolfClient
             _myRole = null;
             _isDead = false;
 			panel1.Visible = false;
+			backtomain.Visible = false;
         }
 
 		public void addSignIn(Form login)
@@ -456,6 +457,8 @@ namespace WerewolfClient
 			this.BackColor = Color.FromArgb(34, 36, 49);
 			label3.ForeColor = Color.White;
 			panel1.Visible = true;
+			label3.Visible = false;
+			backtomain.Visible = true;
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -498,26 +501,26 @@ namespace WerewolfClient
         }
 
         //private bool _FullSceenChatActivated;
-        private void FullSceen_Click(object sender, EventArgs e)
-        {
+        //private void FullSceen_Click(object sender, EventArgs e)
+        //{
             
 
-            TbChatBox.Size = new Size(284, 269);
-            TbChatBox.Location = new Point(22, -205);
+        //    TbChatBox.Size = new Size(284, 269);
+        //    TbChatBox.Location = new Point(22, -205);
             
 
-            MiniChat.Visible = true;
-            FullSceen.Visible = false;
-        }
+        //    MiniChat.Visible = true;
+        //    FullSceen.Visible = false;
+        //}
 
-        private void MiniChat_Click(object sender, EventArgs e)
-        {
-            TbChatBox.Size = new Size(284, 40);
-            TbChatBox.Location = new Point(22, 24);
+        //private void MiniChat_Click(object sender, EventArgs e)
+        //{
+        //    TbChatBox.Size = new Size(284, 40);
+        //    TbChatBox.Location = new Point(22, 24);
 
-            FullSceen.Visible = true;
-            MiniChat.Visible = false;
-        }
+        //    FullSceen.Visible = true;
+        //    MiniChat.Visible = false;
+        //}
 
         private void TbChatBox_TextChanged_1(object sender, EventArgs e)
         {
@@ -525,13 +528,14 @@ namespace WerewolfClient
 
         }
 
-		private void movebar_MouseDown(object sender, MouseEventArgs e)
+
+		private void MainForm_MouseDown(object sender, MouseEventArgs e)
 		{
 			drag = true;
 			start_point = new Point(e.X, e.Y);
 		}
 
-		private void movebar_MouseMove(object sender, MouseEventArgs e)
+		private void MainForm_MouseMove(object sender, MouseEventArgs e)
 		{
 			if (drag)
 			{
@@ -540,9 +544,18 @@ namespace WerewolfClient
 			}
 		}
 
-		private void movebar_MouseUp(object sender, MouseEventArgs e)
+		private void MainForm_MouseUp(object sender, MouseEventArgs e)
 		{
 			drag = false;
+		}
+
+		private void backtomain_Click(object sender, EventArgs e)
+		{
+			this.BackColor = Color.Gainsboro;
+			label3.ForeColor = Color.Black;
+			panel1.Visible = false;
+			label3.Visible = true;
+			backtomain.Visible = false;
 		}
 	}
 
