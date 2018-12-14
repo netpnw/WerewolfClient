@@ -13,6 +13,8 @@ namespace WerewolfClient
 {
     public partial class Login : Form, View
     {
+		bool drag = false;
+		Point start_point = new Point(0, 0);
         private WerewolfController controller;
         private Form _mainForm;
         public Login(Form MainForm)
@@ -117,6 +119,26 @@ namespace WerewolfClient
 		private void Login_Load(object sender, EventArgs e)
 		{
 
+		}
+		
+		private void panel4_MouseDown(object sender, MouseEventArgs e)
+		{
+			drag = true;
+			start_point = new Point(e.X, e.Y);
+		}
+
+		private void panel4_MouseMove(object sender, MouseEventArgs e)
+		{
+			if (drag)
+			{
+				Point p = PointToScreen(e.Location);
+				this.Location = new Point(p.X - start_point.X, p.Y - start_point.Y);
+			}
+		}
+
+		private void panel4_MouseUp(object sender, MouseEventArgs e)
+		{
+			drag = false;
 		}
 	}
 }

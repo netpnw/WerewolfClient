@@ -48,6 +48,7 @@
 			this.CBServer = new System.Windows.Forms.ComboBox();
 			this.TBServer = new System.Windows.Forms.TextBox();
 			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.panel4 = new System.Windows.Forms.Panel();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -61,7 +62,7 @@
 			this.TbLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TbLogin.ForeColor = System.Drawing.Color.White;
 			this.TbLogin.Location = new System.Drawing.Point(196, 206);
-			this.TbLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TbLogin.Margin = new System.Windows.Forms.Padding(4);
 			this.TbLogin.Name = "TbLogin";
 			this.TbLogin.Size = new System.Drawing.Size(252, 23);
 			this.TbLogin.TabIndex = 2;
@@ -73,7 +74,7 @@
 			this.TbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TbPassword.ForeColor = System.Drawing.Color.White;
 			this.TbPassword.Location = new System.Drawing.Point(185, 286);
-			this.TbPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TbPassword.Margin = new System.Windows.Forms.Padding(4);
 			this.TbPassword.Name = "TbPassword";
 			this.TbPassword.PasswordChar = '*';
 			this.TbPassword.Size = new System.Drawing.Size(253, 23);
@@ -85,7 +86,7 @@
 			this.BtnSignIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.BtnSignIn.ForeColor = System.Drawing.Color.White;
 			this.BtnSignIn.Location = new System.Drawing.Point(63, 352);
-			this.BtnSignIn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.BtnSignIn.Margin = new System.Windows.Forms.Padding(4);
 			this.BtnSignIn.Name = "BtnSignIn";
 			this.BtnSignIn.Size = new System.Drawing.Size(405, 55);
 			this.BtnSignIn.TabIndex = 4;
@@ -99,7 +100,7 @@
 			this.BtnSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.BtnSignUp.ForeColor = System.Drawing.Color.White;
 			this.BtnSignUp.Location = new System.Drawing.Point(63, 426);
-			this.BtnSignUp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.BtnSignUp.Margin = new System.Windows.Forms.Padding(4);
 			this.BtnSignUp.Name = "BtnSignUp";
 			this.BtnSignUp.Size = new System.Drawing.Size(405, 55);
 			this.BtnSignUp.TabIndex = 5;
@@ -111,7 +112,7 @@
 			// 
 			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
 			this.pictureBox1.Location = new System.Drawing.Point(219, 14);
-			this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(111, 103);
 			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -233,7 +234,7 @@
             "4 Player",
             "16 Player"});
 			this.CBServer.Location = new System.Drawing.Point(164, 139);
-			this.CBServer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.CBServer.Margin = new System.Windows.Forms.Padding(4);
 			this.CBServer.Name = "CBServer";
 			this.CBServer.Size = new System.Drawing.Size(285, 24);
 			this.CBServer.TabIndex = 18;
@@ -246,7 +247,7 @@
 			this.TBServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TBServer.ForeColor = System.Drawing.Color.White;
 			this.TBServer.Location = new System.Drawing.Point(164, 572);
-			this.TBServer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TBServer.Margin = new System.Windows.Forms.Padding(4);
 			this.TBServer.Name = "TBServer";
 			this.TBServer.Size = new System.Drawing.Size(252, 23);
 			this.TBServer.TabIndex = 19;
@@ -257,6 +258,16 @@
 			this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
 			this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+			// 
+			// panel4
+			// 
+			this.panel4.Location = new System.Drawing.Point(0, 3);
+			this.panel4.Name = "panel4";
+			this.panel4.Size = new System.Drawing.Size(531, 100);
+			this.panel4.TabIndex = 20;
+			this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseDown);
+			this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseMove);
+			this.panel4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseUp);
 			// 
 			// Login
 			// 
@@ -282,8 +293,9 @@
 			this.Controls.Add(this.BtnSignIn);
 			this.Controls.Add(this.TbPassword);
 			this.Controls.Add(this.TbLogin);
+			this.Controls.Add(this.panel4);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "Login";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Login";
@@ -316,5 +328,6 @@
         private System.Windows.Forms.ComboBox CBServer;
         private System.Windows.Forms.TextBox TBServer;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-    }
+		private System.Windows.Forms.Panel panel4;
+	}
 }

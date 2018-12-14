@@ -16,7 +16,9 @@ namespace WerewolfClient
 {
     public partial class MainForm : Form, View
     {
-        private Timer _updateTimer;
+		bool drag = false;
+		Point start_point = new Point(0, 0);
+		private Timer _updateTimer;
         private WerewolfController controller;
         private Game.PeriodEnum _currentPeriod;
         private int _currentDay;
@@ -522,6 +524,26 @@ namespace WerewolfClient
             
 
         }
-    }
+
+		private void movebar_MouseDown(object sender, MouseEventArgs e)
+		{
+			drag = true;
+			start_point = new Point(e.X, e.Y);
+		}
+
+		private void movebar_MouseMove(object sender, MouseEventArgs e)
+		{
+			if (drag)
+			{
+				Point p = PointToScreen(e.Location);
+				this.Location = new Point(p.X - start_point.X, p.Y - start_point.Y);
+			}
+		}
+
+		private void movebar_MouseUp(object sender, MouseEventArgs e)
+		{
+			drag = false;
+		}
+	}
 
 }
