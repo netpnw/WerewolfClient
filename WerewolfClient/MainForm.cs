@@ -16,6 +16,7 @@ namespace WerewolfClient
 {
     public partial class MainForm : Form, View
     {
+		System.Media.SoundPlayer soundplay = new System.Media.SoundPlayer();
 		bool drag = false;
 		Point start_point = new Point(0, 0);
 		private Timer _updateTimer;
@@ -32,25 +33,56 @@ namespace WerewolfClient
         public MainForm()
         {
             InitializeComponent();
+			soundplay.SoundLocation = "Halloween-Music-Night-of-the-Werewolf-192-kbps (online-audio-converter.com).wav";
+			soundplay.PlayLooping();
 
             foreach (int i in Enumerable.Range(0, 16))
             {
+
                 this.Controls["GBPlayers"].Controls["BtnPlayer" + i].Click += new System.EventHandler(this.BtnPlayerX_Click);
                 
                 this.Controls["GBPlayers"].Controls["BtnPlayer" + i].Tag = i;
+
+				
+				//}else if(i >= 15)
+				//{
+				//	BtnPlayer0.Visible = true;
+				//	BtnPlayer1.Visible = true;
+				//	BtnPlayer2.Visible = true;
+				//	BtnPlayer3.Visible = true;
+				//	BtnPlayer4.Visible = true;
+				//	BtnPlayer5.Visible = true;
+				//	BtnPlayer6.Visible = true;
+				//	BtnPlayer7.Visible = true;
+				//	BtnPlayer8.Visible = true;
+				//	BtnPlayer9.Visible = true;
+				//	BtnPlayer10.Visible = true;
+				//	BtnPlayer11.Visible = true;
+				//	BtnPlayer12.Visible = true;
+				//	BtnPlayer13.Visible = true;
+				//	BtnPlayer14.Visible = true;
+				//	BtnPlayer15.Visible = true;
+				//}
             }
 
             _updateTimer = new Timer();
             _voteActivated = false;
             _actionActivated = false;
             EnableButton(BtnJoin, true);
+				
             EnableButton(BtnAction, false);
             EnableButton(BtnVote, false);
             _myRole = null;
             _isDead = false;
-			panel1.Visible = false;
+			LogoutPanel.Visible = false;
 			backtomain.Visible = false;
-        }
+			GameFinish.Visible = false;
+			
+			soundstop.Visible = true;
+			soundstop2.Visible = false;
+			soundplayloop2.Visible = false;
+
+		}
 
 		public void addSignIn(Form login)
         {
@@ -161,6 +193,7 @@ namespace WerewolfClient
                     case EventEnum.JoinGame:
                         if (wm.EventPayloads["Success"] == WerewolfModel.TRUE)
                         {
+							afterjoin.Visible = false;
                             BtnJoin.Visible = false;
                             AddChatMessage("You're joing the game #" + wm.EventPayloads["Game.Id"] + ", please wait for game start.");
                             _updateTimer.Interval = 1000;
@@ -175,19 +208,33 @@ namespace WerewolfClient
                     case EventEnum.GameStopped:
                         AddChatMessage("Game is finished, outcome is " + wm.EventPayloads["Game.Outcome"]);
                         _updateTimer.Enabled = false;
-                        pictureBox1.Visible = true;
-                        break;
+                        LablePicWereWolf.Visible = true;
+						GameFinish.Visible = true;
+						this.BackColor = Color.FromArgb(34, 36, 49);
+						break;
                     case EventEnum.GameStarted:
                         players = wm.Players;
                         _myRole = wm.EventPayloads["Player.Role.Name"];
                         AddChatMessage("Your role is " + _myRole + ".");
                         _currentPeriod = Game.PeriodEnum.Night;
 						this.BackColor = Color.FromArgb(34, 36, 49);
+						if (soundstop.Visible == true)
+						{
+							soundstop2.Visible = true;
+							soundplayloop2.Visible = false;
+						}
+						else
+						{
+							soundplayloop2.Visible = true;
+							soundstop2.Visible = false;
+						}
+						soundstop.Visible = false;
+						soundplayloop.Visible = false;
 						GBPlayers.ForeColor = Color.White;
 						GBChat.ForeColor = Color.White;
 						GBAction.ForeColor = Color.White;
 						GBStatus.ForeColor = Color.White;
-						label3.ForeColor = Color.White;
+						BtnManuLoout.ForeColor = Color.White;
 						EnableButton(BtnAction, true);
                         switch (_myRole)
                         {
@@ -239,22 +286,45 @@ namespace WerewolfClient
 						GBChat.ForeColor = Color.Black;
 						GBAction.ForeColor = Color.Black;
 						GBStatus.ForeColor = Color.Black;
-						label3.ForeColor = Color.Black;
+						BtnManuLoout.ForeColor = Color.Black;
+						if (soundstop2.Visible == true)
+						{
+							soundstop.Visible = true;
+							soundplayloop.Visible = false;
+						}
+						else
+						{
+							soundplayloop.Visible = true;
+							soundstop.Visible = false;
+						}
+						soundstop2.Visible = false;
+						soundplayloop2.Visible = false;
+						
+
 						break;
                     case EventEnum.SwitchToNightTime:
                         AddChatMessage("Switch to night time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
                         _currentPeriod = Game.PeriodEnum.Night;
                         LBPeriod.Text = "Night time of";
+						if(soundstop.Visible == true)
+						{
+							soundstop2.Visible = true;
+							soundplayloop2.Visible = false;
+						}
+						else
+						{
+							soundplayloop2.Visible = true;
+							soundstop2.Visible = false;
+						}
+						soundstop.Visible = false;
+						soundplayloop.Visible = false;
 						this.BackColor = Color.FromArgb(34, 36, 49);
 						GBPlayers.ForeColor = Color.White;
 						GBChat.ForeColor = Color.White;
 						GBAction.ForeColor = Color.White;
 						GBStatus.ForeColor = Color.White;
-						label3.ForeColor = Color.White;
-						//if (wm.Player = WerewolfModel.ROLE_GUNNER)
-						//{
-						//	TbChatInput.Visible = false;
-						//}
+						BtnManuLoout.ForeColor = Color.White;
+						
 
 						break;
                     case EventEnum.UpdateDay:
@@ -400,6 +470,7 @@ namespace WerewolfClient
         {
             Button btnPlayer = (Button)sender;
             int index = (int) btnPlayer.Tag;
+
             if (players == null)
             {
                 // Nothing to do here;
@@ -420,7 +491,7 @@ namespace WerewolfClient
                 _voteActivated = false;
                 BtnVote.BackColor = Button.DefaultBackColor;
                 AddChatMessage("You vote on " + players[index].Name);
-               // pictureBox2.Visible = true;
+               
                 WerewolfCommand wcmd = new WerewolfCommand();
                 wcmd.Action = CommandEnum.Vote;
                 wcmd.Payloads = new Dictionary<string, string>() { { "Target", players[index].Id.ToString() } };
@@ -455,10 +526,21 @@ namespace WerewolfClient
 		private void label3_Click(object sender, EventArgs e)
 		{
 			this.BackColor = Color.FromArgb(34, 36, 49);
-			label3.ForeColor = Color.White;
-			panel1.Visible = true;
-			label3.Visible = false;
+			BtnManuLoout.ForeColor = Color.White;
+			LogoutPanel.Visible = true;
+			BtnManuLoout.Visible = false;
 			backtomain.Visible = true;
+			if (soundstop.Visible == true)
+			{
+				soundstop2.Visible = true;
+			}
+			else
+			{
+				soundplayloop2.Visible = true;
+				soundstop2.Visible = false;
+			}
+			soundstop.Visible = false;
+			soundplayloop.Visible = false;
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -469,17 +551,28 @@ namespace WerewolfClient
 			wcmd.Action = CommandEnum.SignOut;
 			wcmd.Payloads = new Dictionary<string, string>() { { "Server", login.GetServer() } };
 			controller.ActionPerformed(wcmd);
-			//player.controls.stop();
+			
 			login.Show();
 			this.Hide();
 			BtnJoin.Show();
-			panel1.Visible = false;
+			LogoutPanel.Visible = false;
 			this.BackColor = Color.Gainsboro;
 			GBPlayers.ForeColor = Color.Black;
 			GBChat.ForeColor = Color.Black;
 			GBAction.ForeColor = Color.Black;
 			GBStatus.ForeColor = Color.Black;
-			label3.ForeColor = Color.Black;
+			BtnManuLoout.ForeColor = Color.Black;
+			if (soundstop2.Visible == true)
+			{
+				soundstop.Visible = true;
+			}
+			else
+			{
+				soundplayloop.Visible = true;
+				soundstop.Visible = false;
+			}
+			soundstop2.Visible = false;
+			soundplayloop2.Visible = false;
 		}
 
 	
@@ -500,27 +593,6 @@ namespace WerewolfClient
             
         }
 
-        //private bool _FullSceenChatActivated;
-        //private void FullSceen_Click(object sender, EventArgs e)
-        //{
-            
-
-        //    TbChatBox.Size = new Size(284, 269);
-        //    TbChatBox.Location = new Point(22, -205);
-            
-
-        //    MiniChat.Visible = true;
-        //    FullSceen.Visible = false;
-        //}
-
-        //private void MiniChat_Click(object sender, EventArgs e)
-        //{
-        //    TbChatBox.Size = new Size(284, 40);
-        //    TbChatBox.Location = new Point(22, 24);
-
-        //    FullSceen.Visible = true;
-        //    MiniChat.Visible = false;
-        //}
 
         private void TbChatBox_TextChanged_1(object sender, EventArgs e)
         {
@@ -551,11 +623,115 @@ namespace WerewolfClient
 
 		private void backtomain_Click(object sender, EventArgs e)
 		{
-			this.BackColor = Color.Gainsboro;
-			label3.ForeColor = Color.Black;
-			panel1.Visible = false;
-			label3.Visible = true;
+			LogoutPanel.Visible = false;
+			BtnManuLoout.Visible = true;
 			backtomain.Visible = false;
+			//if (_currentPeriod == Game.PeriodEnum.Day || )
+			//{
+			this.BackColor = Color.Gainsboro;
+			GBPlayers.ForeColor = Color.Black;
+			GBChat.ForeColor = Color.Black;
+			GBAction.ForeColor = Color.Black;
+			GBStatus.ForeColor = Color.Black;
+			BtnManuLoout.ForeColor = Color.Black;
+			//}
+			//else
+			//{
+			//	this.BackColor = Color.FromArgb(34, 36, 49);
+			//	GBPlayers.ForeColor = Color.White;
+			//	GBChat.ForeColor = Color.White;
+			//	GBAction.ForeColor = Color.White;
+			//	GBStatus.ForeColor = Color.White;
+			//	BtnManuLoout.ForeColor = Color.White;
+			//}
+			
+			if (soundstop2.Visible == true)
+			{
+				soundstop.Visible = true;
+			}
+			else
+			{
+				soundplayloop.Visible = true;
+				soundstop.Visible = false;
+			}
+			soundstop2.Visible = false;
+			soundplayloop2.Visible = false;
+		}
+		int chatsetup = 1;
+		private void TbChatBox_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (chatsetup == 1)
+			{
+				chatsetup = 2;
+			}
+			else
+			{
+				chatsetup = 1;
+			}
+		}
+
+		private void TbChatBox_MouseUp(object sender, MouseEventArgs e)
+		{
+			if (chatsetup == 2)
+			{
+				GBChat.Size = new Size(325, 370);
+				GBChat.Location = new Point(20, 30);
+				TbChatBox.Location = new Point(19, 23);
+				TbChatBox.Size = new Size(284, 299);
+				TbChatInput.Location = new Point(19, 325);
+			}
+			if (chatsetup == 1)
+			{
+				GBChat.Size = new Size(325, 113);
+				GBChat.Location = new Point(20, 287);
+				TbChatBox.Location = new Point(19, 23);
+				TbChatBox.Size = new Size(284, 41);
+				TbChatInput.Location = new Point(19, 70);
+			}
+		}
+
+		private void BtnExitinGamefinish_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+		private void soundstop_Click(object sender, EventArgs e)
+		{
+			
+			soundplay.Stop();
+			soundplayloop.Visible = true;
+			soundstop.Visible = false;
+			
+		}
+
+		private void soundplayloop_Click(object sender, EventArgs e)
+		{
+			soundplay.PlayLooping();
+			soundplayloop.Visible = false;
+			soundstop.Visible = true;
+			
+			
+			
+		}
+
+		private void soundstop2_Click(object sender, EventArgs e)
+		{
+			
+				soundplay.Stop();
+				soundplayloop2.Visible = true;
+				soundstop2.Visible = false;
+			
+			
+			
+
+		}
+
+		private void soundplayloop2_Click(object sender, EventArgs e)
+		{
+				soundplay.PlayLooping();
+				soundplayloop2.Visible = false;
+				soundstop2.Visible = true;
+			
 		}
 	}
 

@@ -48,10 +48,14 @@
 			this.CBServer = new System.Windows.Forms.ComboBox();
 			this.TBServer = new System.Windows.Forms.TextBox();
 			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.soundloginplay = new System.Windows.Forms.PictureBox();
+			this.soundloginstop = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.soundloginplay)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.soundloginstop)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// TbLogin
@@ -258,6 +262,30 @@
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
 			this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
 			// 
+			// soundloginplay
+			// 
+			this.soundloginplay.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.soundloginplay.Image = ((System.Drawing.Image)(resources.GetObject("soundloginplay.Image")));
+			this.soundloginplay.Location = new System.Drawing.Point(252, 572);
+			this.soundloginplay.Name = "soundloginplay";
+			this.soundloginplay.Size = new System.Drawing.Size(22, 27);
+			this.soundloginplay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.soundloginplay.TabIndex = 20;
+			this.soundloginplay.TabStop = false;
+			this.soundloginplay.Click += new System.EventHandler(this.soundloginplay_Click);
+			// 
+			// soundloginstop
+			// 
+			this.soundloginstop.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.soundloginstop.Image = ((System.Drawing.Image)(resources.GetObject("soundloginstop.Image")));
+			this.soundloginstop.Location = new System.Drawing.Point(252, 572);
+			this.soundloginstop.Name = "soundloginstop";
+			this.soundloginstop.Size = new System.Drawing.Size(22, 27);
+			this.soundloginstop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.soundloginstop.TabIndex = 21;
+			this.soundloginstop.TabStop = false;
+			this.soundloginstop.Click += new System.EventHandler(this.soundloginstop_Click);
+			// 
 			// Login
 			// 
 			this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
@@ -265,6 +293,8 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
 			this.ClientSize = new System.Drawing.Size(529, 610);
+			this.Controls.Add(this.soundloginstop);
+			this.Controls.Add(this.soundloginplay);
 			this.Controls.Add(this.TBServer);
 			this.Controls.Add(this.CBServer);
 			this.Controls.Add(this.label2);
@@ -283,6 +313,7 @@
 			this.Controls.Add(this.TbPassword);
 			this.Controls.Add(this.TbLogin);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "Login";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -295,6 +326,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.soundloginplay)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.soundloginstop)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -319,5 +352,7 @@
         private System.Windows.Forms.ComboBox CBServer;
         private System.Windows.Forms.TextBox TBServer;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+		private System.Windows.Forms.PictureBox soundloginplay;
+		private System.Windows.Forms.PictureBox soundloginstop;
 	}
 }

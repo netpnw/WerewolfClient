@@ -17,11 +17,14 @@ namespace WerewolfClient
 		Point start_point = new Point(0, 0);
         private WerewolfController controller;
         private Form _mainForm;
-        public Login(Form MainForm)
+		System.Media.SoundPlayer soundplay = new System.Media.SoundPlayer();
+		public Login(Form MainForm)
         {
             InitializeComponent();
             _mainForm = MainForm;
-        }
+			soundplay.SoundLocation = "Halloween-Music-Night-of-the-Werewolf-192-kbps (online-audio-converter.com).wav";
+			soundloginplay.Visible = false;
+		}
 
         public void Notify(Model m)
         {
@@ -66,6 +69,10 @@ namespace WerewolfClient
 
         private void BtnSignIn_Click(object sender, EventArgs e)
         {
+			if(TbLogin.Text == ""||TbPassword.Text == "")
+			{
+				MessageBox.Show("Login or password incorrect, please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
             WerewolfCommand wcmd = new WerewolfCommand();
             wcmd.Action = WerewolfCommand.CommandEnum.SignIn;
             wcmd.Payloads = new Dictionary<string, string>() { { "Login", TbLogin.Text }, { "Password", TbPassword.Text }, { "Server", TBServer.Text } };
@@ -74,11 +81,15 @@ namespace WerewolfClient
 
         private void BtnSignUp_Click(object sender, EventArgs e)
         {
-            WerewolfCommand wcmd = new WerewolfCommand();
+			if (TbLogin.Text == "" || TbPassword.Text == "")
+			{
+				MessageBox.Show("Login or password incorrect, please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
+			WerewolfCommand wcmd = new WerewolfCommand();
             wcmd.Action = WerewolfCommand.CommandEnum.SignUp;
             wcmd.Payloads = new Dictionary<string, string>() { { "Login", TbLogin.Text}, { "Password",TbPassword.Text}, { "Server", TBServer.Text } };
             controller.ActionPerformed(wcmd);
-
+			MessageBox.Show("Sign up success,please logout to enter the game.");
 			
         }
 
@@ -101,19 +112,23 @@ namespace WerewolfClient
 
             if (CBServer.SelectedItem.ToString() == "2 Player")
             {
-                TBServer.Text = "http://project-ile.net:2342/werewolf/";
-                
-            }
+				TBServer.Text = "http://project-ile.net:2342/werewolf/";
+				//TBServer.Text = "http://localhost:2343/werewolf/";
+				
+
+			}
 
            else if (CBServer.SelectedItem.ToString() == "4 Player")
             {
                 TBServer.Text = "http://project-ile.net:2344/werewolf/";
-            }
+				//TBServer.Text = "http://localhost:2343/werewolf/";
+			}
 
             else  if (CBServer.SelectedItem.ToString() == "16 Player")
             {
-                TBServer.Text = "http://project-ile.net:23416/werewolf/";
-            }
+				 TBServer.Text = "http://project-ile.net:23416/werewolf/";
+				//TBServer.Text = "http://localhost:2343/werewolf/";
+			}
         }
 
 		private void Login_Load(object sender, EventArgs e)
@@ -142,6 +157,21 @@ namespace WerewolfClient
 		private void Login_MouseUp(object sender, MouseEventArgs e)
 		{
 			drag = false;
+		}
+
+		private void soundloginplay_Click(object sender, EventArgs e)
+		{
+			soundplay.PlayLooping();
+			soundloginplay.Visible = false;
+			soundloginstop.Visible = true;
+
+		}
+
+		private void soundloginstop_Click(object sender, EventArgs e)
+		{
+			soundplay.Stop();
+			soundloginplay.Visible = true;
+			soundloginstop.Visible = false;
 		}
 	}
 }
